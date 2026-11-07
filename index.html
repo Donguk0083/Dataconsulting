@@ -1,0 +1,1549 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RevivalX - 상권 회생 핀테크 AI 컨설팅 플랫폼</title>
+  <meta name="description" content="빅데이터 기반 상권 정밀 진단과 맞춤형 금융 재구조화로 골목상권과 소상공인의 턴어라운드를 실현하는 AI 상권회생 핀테크 컨설팅 플랫폼" />
+  <meta property="og:title" content="RevivalX - 상권 회생 핀테크 AI 컨설팅 플랫폼" />
+  <meta property="og:description" content="빅데이터 기반 상권 정밀 진단과 맞춤형 금융 재구조화로 골목상권과 소상공인의 턴어라운드를 실현하는 AI 상권회생 핀테크 컨설팅 플랫폼" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Pretendard Web Font -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Pretendard Variable"', 'Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'Roboto', 'sans-serif'],
+          },
+          colors: {
+            primary: {
+              DEFAULT: '#3B82F6',
+              hover: '#2563EB',
+              light: '#EFF6FF',
+            },
+            accent: {
+              emerald: '#10B981',
+              emeraldLight: '#ECFDF5',
+            },
+            dark: {
+              base: '#0B1120',
+              card: '#0F172A',
+              cardHover: '#1E293B',
+              border: '#1E293B',
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    body {
+      font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0B1120;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #334155;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #475569;
+    }
+  </style>
+</head>
+
+<body class="bg-[#0B1120] text-slate-100 antialiased selection:bg-blue-600 selection:text-white font-sans min-h-screen flex flex-col">
+
+  <!-- ========================================== -->
+  <!-- 1. TOP BAR NAVIGATION (Top Bar Contract)   -->
+  <!-- ========================================== -->
+  <header class="sticky top-0 z-40 w-full backdrop-blur-md bg-[#0B1120]/90 border-b border-slate-800/80 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between gap-8">
+      
+      <!-- Zone 1: Single text element wordmark -->
+      <a href="#" class="text-xl font-bold tracking-tight text-white hover:text-blue-400 transition-colors whitespace-nowrap shrink-0 flex items-center gap-2">
+        <span class="w-2.5 h-2.5 rounded-full bg-blue-500 inline-block"></span>
+        <span>RevivalX</span>
+      </a>
+
+      <!-- Zone 2: 5 Nav Links -->
+      <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-300">
+        <a href="#solutions" class="hover:text-blue-400 transition-colors whitespace-nowrap shrink-0">서비스 솔루션</a>
+        <a href="#simulator" class="hover:text-blue-400 transition-colors whitespace-nowrap shrink-0">AI 상권진단</a>
+        <a href="#stories" class="hover:text-blue-400 transition-colors whitespace-nowrap shrink-0">성공사례</a>
+        <a href="#job-vision" class="hover:text-blue-400 transition-colors whitespace-nowrap shrink-0">창직 비전</a>
+        <a href="#metrics" class="hover:text-blue-400 transition-colors whitespace-nowrap shrink-0">성과 지표</a>
+      </nav>
+
+      <!-- Zone 3: 1 Primary Action -->
+      <div class="hidden md:flex items-center gap-3 shrink-0">
+        <button onclick="openModal('consultModal')" class="px-5 py-2.5 text-xs font-semibold text-white bg-blue-600 hover:bg-blue-500 active:bg-blue-700 rounded-xl transition-all shadow-md shadow-blue-500/20 whitespace-nowrap shrink-0 cursor-pointer">
+          무료 컨설팅 신청
+        </button>
+      </div>
+
+      <!-- Mobile menu trigger -->
+      <div class="md:hidden flex items-center">
+        <button id="mobileMenuBtn" onclick="toggleMobileMenu()" class="p-2 text-slate-400 hover:text-white focus:outline-none" aria-label="메뉴 열기">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobileDrawer" class="hidden md:hidden bg-[#0F172A] border-b border-slate-800 px-5 pt-3 pb-6 space-y-3">
+      <a href="#solutions" onclick="toggleMobileMenu()" class="block text-sm font-medium text-slate-300 hover:text-blue-400 py-2">서비스 솔루션</a>
+      <a href="#simulator" onclick="toggleMobileMenu()" class="block text-sm font-medium text-slate-300 hover:text-blue-400 py-2">AI 상권진단 시뮬레이터</a>
+      <a href="#stories" onclick="toggleMobileMenu()" class="block text-sm font-medium text-slate-300 hover:text-blue-400 py-2">성공사례</a>
+      <a href="#job-vision" onclick="toggleMobileMenu()" class="block text-sm font-medium text-slate-300 hover:text-blue-400 py-2">창직 보고서 & 직무 비전</a>
+      <a href="#metrics" onclick="toggleMobileMenu()" class="block text-sm font-medium text-slate-300 hover:text-blue-400 py-2">성과 지표</a>
+      <div class="pt-2">
+        <button onclick="toggleMobileMenu(); openModal('consultModal');" class="w-full py-3 text-center text-sm font-semibold text-white bg-blue-600 hover:bg-blue-500 rounded-xl transition-all shadow-md shadow-blue-500/20">
+          무료 컨설팅 신청
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================== -->
+  <!-- 2. HERO SECTION                            -->
+  <!-- ========================================== -->
+  <section class="relative pt-6 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+    <!-- Ambient backdrops -->
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[360px] bg-blue-600/10 blur-[130px] rounded-full pointer-events-none"></div>
+    <div class="absolute top-1/3 right-10 w-[350px] h-[350px] bg-emerald-500/10 blur-[140px] rounded-full pointer-events-none"></div>
+
+    <div class="relative rounded-2xl overflow-hidden border border-slate-800 bg-[#0F172A] shadow-2xl">
+      <div class="grid grid-cols-1 lg:grid-cols-12 items-stretch min-h-[580px]">
+        
+        <!-- Left: Headline & CTAs -->
+        <div class="lg:col-span-7 p-8 sm:p-12 lg:p-16 flex flex-col justify-between z-10">
+          <div>
+            <!-- Anti-pill unboxed category indicator -->
+            <div class="flex items-center gap-2 text-xs font-semibold text-blue-400 tracking-wider mb-4">
+              <span>AI 상권 분석</span>
+              <span aria-hidden="true">·</span>
+              <span>핀테크 금융 재구조화</span>
+              <span aria-hidden="true">·</span>
+              <span class="text-emerald-400">골목상권 회생 전문</span>
+            </div>
+
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-[1.2] text-balance">
+              데이터와 AI로 상권을 살리는
+              <span class="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-300 to-emerald-400">
+                상권 회생 핀테크 컨설팅
+              </span>
+            </h1>
+
+            <p class="mt-5 text-base sm:text-lg text-slate-300 font-normal leading-relaxed max-w-xl">
+              연 100만 자영업 폐업 위기 속, 빅데이터 기반 정밀 상권 진단과 맞춤형 정책 금융 스트럭처링을 통해 벼랑 끝 골목상권에
+              <strong class="text-white font-semibold"> 평균 +28.6% 영업이익 턴어라운드</strong>를 이끌어냅니다.
+            </p>
+
+            <div class="mt-8 flex flex-wrap items-center gap-4">
+              <a href="#simulator" class="px-6 py-3.5 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-500 active:bg-blue-700 rounded-xl transition-all shadow-lg shadow-blue-600/30 flex items-center gap-2 cursor-pointer">
+                <span>내 매장 AI 회생진단 시작</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+              </a>
+              <button onclick="openModal('consultModal')" class="px-6 py-3.5 text-sm font-semibold text-slate-200 bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 rounded-xl transition-all cursor-pointer">
+                전문 컨설턴트 1:1 상담
+              </button>
+            </div>
+          </div>
+
+          <!-- Quick Proof Strip -->
+          <div class="mt-10 pt-6 border-t border-slate-800/80 grid grid-cols-3 gap-4">
+            <div>
+              <p class="text-xs text-slate-400">평균 회생 성공률</p>
+              <p class="text-xl sm:text-2xl font-bold text-emerald-400 mt-1 tabular-nums">87.4%</p>
+            </div>
+            <div>
+              <p class="text-xs text-slate-400">금융 매칭 누적액</p>
+              <p class="text-xl sm:text-2xl font-bold text-white mt-1 tabular-nums">420억+</p>
+            </div>
+            <div>
+              <p class="text-xs text-slate-400">평균 이자율 경감</p>
+              <p class="text-xl sm:text-2xl font-bold text-blue-400 mt-1 tabular-nums">-3.8%p</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Visual & High-contrast White Card HUD -->
+        <div class="lg:col-span-5 relative min-h-[340px] lg:min-h-full flex items-center justify-center p-6 lg:p-8 overflow-hidden bg-slate-900/60">
+          <img
+            src="/assets/images/hero_fintech_revival_1794011419450.jpg"
+            alt="RevivalX AI 상권 분석 및 핀테크 회생 관제 대시보드"
+            class="absolute inset-0 w-full h-full object-cover opacity-80 mix-blend-luminosity hover:mix-blend-normal transition-all duration-700"
+            onerror="this.src='/src/assets/images/hero_fintech_revival_1794011419450.jpg'"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-transparent to-[#0F172A]/40 lg:bg-gradient-to-r lg:from-[#0F172A] lg:via-[#0F172A]/20 lg:to-transparent"></div>
+
+          <!-- Clean White Card Component on Dark Mode (Requested Requirement) -->
+          <div class="relative z-10 w-full max-w-sm bg-white text-slate-900 rounded-xl p-5 shadow-2xl border border-slate-100">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-150">
+              <div class="flex items-center gap-2">
+                <div class="w-7 h-7 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-xs">
+                  RX
+                </div>
+                <div>
+                  <h2 class="text-xs font-bold text-slate-900">실시간 상권 회생 모니터</h2>
+                  <p class="text-[11px] text-slate-500">서울 마포구 연남 상권</p>
+                </div>
+              </div>
+              <span class="text-xs font-semibold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded">
+                회생 유력
+              </span>
+            </div>
+
+            <div class="mt-4 space-y-3">
+              <div class="flex items-center justify-between text-xs">
+                <span class="text-slate-600 flex items-center gap-1.5">
+                  <svg class="w-3.5 h-3.5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                  예상 매출 회복률
+                </span>
+                <span class="font-bold tabular-nums text-sm text-emerald-600">+34.2%</span>
+              </div>
+
+              <div class="flex items-center justify-between text-xs">
+                <span class="text-slate-600 flex items-center gap-1.5">
+                  <svg class="w-3.5 h-3.5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                  대출 재조정 절감액
+                </span>
+                <span class="font-bold text-slate-900 tabular-nums text-sm">월 142만 원</span>
+              </div>
+
+              <div class="flex items-center justify-between text-xs">
+                <span class="text-slate-600 flex items-center gap-1.5">
+                  <svg class="w-3.5 h-3.5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                  유동인구 타깃 전환도
+                </span>
+                <span class="font-bold text-blue-600 tabular-nums text-sm">89.1점</span>
+              </div>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-slate-150">
+              <div class="flex justify-between text-[11px] text-slate-500 mb-1">
+                <span>턴어라운드 실행 진척도</span>
+                <span class="font-semibold text-slate-800">4단계 / 5단계</span>
+              </div>
+              <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+                <div class="bg-gradient-to-r from-blue-500 to-emerald-500 h-2 rounded-full w-[80%]"></div>
+              </div>
+            </div>
+
+            <a href="#simulator" class="mt-4 block w-full py-2 text-center text-xs font-semibold text-blue-600 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors cursor-pointer">
+              우리 상권 진단 리포트 뽑아보기
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 3. STORIES SECTION (Benchmarking "Connect. Solve. Create. + AI") -->
+  <!-- ============================================================ -->
+  <section id="stories" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+      <div>
+        <div class="flex items-center gap-2 text-xs font-semibold text-emerald-400 mb-2">
+          <span>실증 데이터 기반</span>
+          <span aria-hidden="true">·</span>
+          <span>상권 회생 리포트</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          Connect. Restructure. Revive.
+          <span class="text-blue-500 font-mono ml-2">+ AI</span>
+        </h2>
+        <p class="mt-3 text-slate-400 text-sm sm:text-base max-w-xl">
+          단순 마케팅이 아닌, 정밀 데이터 분석과 핀테크 금융 재구조화로 실현한 실제 상권 회생 스토리입니다.
+        </p>
+      </div>
+
+      <div class="flex items-center gap-2 text-xs text-slate-400">
+        <span>누적 회생 사례</span>
+        <span class="text-white font-bold tabular-nums text-base">3,420건+</span>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <!-- Left Featured Large White Card -->
+      <div class="lg:col-span-7 bg-white text-slate-900 rounded-2xl overflow-hidden shadow-xl border border-slate-100 flex flex-col justify-between transition-all hover:shadow-2xl">
+        <div class="relative h-64 sm:h-72 overflow-hidden bg-slate-900">
+          <img
+            src="/assets/images/store_turnaround_story_1794011421640.jpg"
+            alt="서울 마포 연남 골목상권 14개 점포 공동 회생"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+            onerror="this.src='/src/assets/images/store_turnaround_story_1794011421640.jpg'"
+          />
+          <div class="absolute top-4 left-4 bg-[#0F172A]/90 backdrop-blur-md text-white text-xs font-medium px-3 py-1.5 rounded-lg border border-slate-700/60 flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
+            <span>대표 턴어라운드 성과</span>
+          </div>
+        </div>
+
+        <div class="p-6 sm:p-8">
+          <div class="flex items-center gap-2 text-xs text-slate-500 mb-3">
+            <span class="font-semibold text-blue-600">상권 공동 회생</span>
+            <span aria-hidden="true">·</span>
+            <span>서울 마포구</span>
+            <span aria-hidden="true">·</span>
+            <span>2026.10</span>
+          </div>
+
+          <h3 class="text-xl sm:text-2xl font-bold text-slate-900 leading-snug">
+            서울 마포 연남 골목상권 14개 점포 공동 회생: 월매출 +42.8% 턴어라운드
+          </h3>
+
+          <p class="mt-3 text-sm text-slate-600 leading-relaxed">
+            급격한 임대료 인상과 유동인구 이동으로 폐업 위기에 처한 14개 외식·카페 매장에 대해 동선 재배치, 메뉴 리밸런싱, 지역신보 연계 12억 원 저리 대환대출을 일괄 실행하여 전 점포 흑자 전환에 성공했습니다.
+          </p>
+
+          <div class="mt-6 pt-5 border-t border-slate-100 grid grid-cols-3 gap-3 bg-slate-50 p-4 rounded-xl">
+            <div>
+              <p class="text-[11px] text-slate-500">평균 매출 증가</p>
+              <p class="text-base sm:text-lg font-bold text-emerald-600 mt-0.5 tabular-nums">+42.8%</p>
+            </div>
+            <div>
+              <p class="text-[11px] text-slate-500">대출 이자 부담</p>
+              <p class="text-base sm:text-lg font-bold text-blue-600 mt-0.5 tabular-nums">-4.2%p</p>
+            </div>
+            <div>
+              <p class="text-[11px] text-slate-500">흑자 전환율</p>
+              <p class="text-base sm:text-lg font-bold text-emerald-600 mt-0.5 tabular-nums">100% (14개소)</p>
+            </div>
+          </div>
+
+          <div class="mt-6 flex items-center justify-between">
+            <blockquote class="text-xs text-slate-500 italic max-w-md">
+              "막막했던 빚과 끝없는 적자 속에서, 상권 데이터와 금융 전문가의 처방 덕분에 다시 희망을 찾았습니다."
+            </blockquote>
+            <button onclick="openModal('caseModal')" class="inline-flex items-center gap-1 text-xs font-bold text-blue-600 hover:text-blue-700 hover:underline shrink-0 cursor-pointer">
+              상세 분석 보고서 보기
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Stacked Story Cards -->
+      <div class="lg:col-span-5 space-y-4">
+        
+        <div onclick="openModal('caseModal')" class="group bg-[#0F172A] hover:bg-[#1E293B] border border-slate-800 hover:border-slate-700 rounded-xl p-5 transition-all cursor-pointer shadow-md">
+          <div class="flex items-center justify-between text-xs text-slate-400 mb-2">
+            <span class="font-semibold text-blue-400">데이터 & 금융 R&D</span>
+            <span class="tabular-nums">2026.09</span>
+          </div>
+          <h4 class="text-base font-bold text-white group-hover:text-blue-300 transition-colors leading-snug">
+            상권 빅데이터 기반 폐업 조기경보 AI 모델(Pre-Default Radar) 특허 출원
+          </h4>
+          <p class="mt-2 text-xs text-slate-400 line-clamp-2 leading-relaxed">
+            카드 매출 실시간 감소율, 인근 유동인구 이탈 지수, 원가율 변동을 종합 분석하여 폐업 위기 60일 전 위험을 감지하는 모델.
+          </p>
+          <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs">
+            <span class="text-emerald-400 font-bold">감지 정확도 94.2%</span>
+            <span class="text-slate-400">골든타임 62일 확보 →</span>
+          </div>
+        </div>
+
+        <div onclick="openModal('caseModal')" class="group bg-[#0F172A] hover:bg-[#1E293B] border border-slate-800 hover:border-slate-700 rounded-xl p-5 transition-all cursor-pointer shadow-md">
+          <div class="flex items-center justify-between text-xs text-slate-400 mb-2">
+            <span class="font-semibold text-blue-400">정책 금융 연계</span>
+            <span class="tabular-nums">2026.08</span>
+          </div>
+          <h4 class="text-base font-bold text-white group-hover:text-blue-300 transition-colors leading-snug">
+            지자체 소상공인 상권 회생 특별 펀드 250억 원 매칭 지원 돌파
+          </h4>
+          <p class="mt-2 text-xs text-slate-400 line-clamp-2 leading-relaxed">
+            고금리 다중채무 소상공인 612개 점포를 대상으로 지자체 특례보증 및 2.5%대 정책자금 대환대출 집행 성공.
+          </p>
+          <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs">
+            <span class="text-emerald-400 font-bold">누적 매칭 250억 원</span>
+            <span class="text-slate-400">수혜 612개소 →</span>
+          </div>
+        </div>
+
+        <div onclick="openModal('caseModal')" class="group bg-[#0F172A] hover:bg-[#1E293B] border border-slate-800 hover:border-slate-700 rounded-xl p-5 transition-all cursor-pointer shadow-md">
+          <div class="flex items-center justify-between text-xs text-slate-400 mb-2">
+            <span class="font-semibold text-blue-400">상권 업종 리밸런싱</span>
+            <span class="tabular-nums">2026.07</span>
+          </div>
+          <h4 class="text-base font-bold text-white group-hover:text-blue-300 transition-colors leading-snug">
+            빅데이터 기반 F&B 메뉴 리밸런싱: 원가율 38%에서 24%로 슬림화
+          </h4>
+          <p class="mt-2 text-xs text-slate-400 line-clamp-2 leading-relaxed">
+            상권 내 중복 메뉴를 퇴출하고 오피스 직장인 타깃 세트 구성으로 월 순이익 650만 원 상승 견인.
+          </p>
+          <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs">
+            <span class="text-emerald-400 font-bold">원가율 -14%p 절감</span>
+            <span class="text-slate-400">순이익 +650만 원 →</span>
+          </div>
+        </div>
+
+        <!-- Banner -->
+        <div class="bg-gradient-to-br from-blue-900/40 to-slate-900 border border-blue-800/50 rounded-xl p-5 text-white flex items-center justify-between">
+          <div>
+            <p class="text-xs font-bold text-blue-400">2026 상반기 상권 회생 백서</p>
+            <h5 class="text-sm font-semibold mt-1">소상공인 턴어라운드 10대 핵심 전략</h5>
+          </div>
+          <button onclick="openModal('caseModal')" class="px-3.5 py-2 text-xs font-semibold bg-blue-600 hover:bg-blue-500 rounded-lg text-white transition-colors cursor-pointer shrink-0">
+            백서 열람
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 4. CORE SOLUTIONS (Benchmarking "기술과 서비스" Icon Grid)   -->
+  <!-- ============================================================ -->
+  <section id="solutions" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
+      <div>
+        <div class="flex items-center gap-2 text-xs font-semibold text-blue-400 mb-2">
+          <span>Core Capabilities</span>
+          <span aria-hidden="true">·</span>
+          <span>턴어라운드 솔루션</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          기술과 핵심 서비스
+        </h2>
+        <p class="mt-3 text-slate-400 text-sm sm:text-base max-w-xl">
+          단절되어 있던 데이터 분석, 금융 재설계, 상권 실무를 하나의 유기적인 파이프라인으로 통합했습니다.
+        </p>
+      </div>
+
+      <!-- Segmented filter control -->
+      <div class="flex items-center gap-1.5 p-1 bg-slate-900 border border-slate-800 rounded-xl">
+        <button onclick="filterServices('all')" id="btn-filter-all" class="filter-btn px-3 py-1.5 text-xs font-semibold rounded-lg transition-colors cursor-pointer bg-blue-600 text-white">
+          전체 솔루션
+        </button>
+        <button onclick="filterServices('data')" id="btn-filter-data" class="filter-btn px-3 py-1.5 text-xs font-medium rounded-lg transition-colors cursor-pointer text-slate-400 hover:text-white">
+          빅데이터 분석
+        </button>
+        <button onclick="filterServices('finance')" id="btn-filter-finance" class="filter-btn px-3 py-1.5 text-xs font-medium rounded-lg transition-colors cursor-pointer text-slate-400 hover:text-white">
+          핀테크 금융
+        </button>
+        <button onclick="filterServices('consulting')" id="btn-filter-consulting" class="filter-btn px-3 py-1.5 text-xs font-medium rounded-lg transition-colors cursor-pointer text-slate-400 hover:text-white">
+          상권·매장 혁신
+        </button>
+      </div>
+    </div>
+
+    <!-- 6-Grid Benchmarking Kakao Enterprise's Rounded Square Colorful Icons -->
+    <div id="serviceGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      
+      <!-- Card 1 -->
+      <div data-category="data" class="service-card group bg-[#0F172A] hover:bg-[#1E293B] border border-slate-800 hover:border-slate-700 rounded-2xl p-6 transition-all duration-300 shadow-lg cursor-pointer flex flex-col justify-between" onclick="showServiceDetail(0)">
+        <div>
+          <div class="flex items-center gap-4 mb-5">
+            <div class="w-14 h-14 bg-blue-600 text-white rounded-xl flex items-center justify-center shadow-md group-hover:scale-105 transition-transform duration-300">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 110-16 8 8 0 010 16zm0-14a6 6 0 100 12 6 6 0 000-12z"></path></svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-white group-hover:text-blue-300 transition-colors">AI 상권 레이더</h3>
+              <p class="text-xs text-slate-400 mt-0.5">통신·카드 빅데이터 실시간 분석</p>
+            </div>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed mb-5">
+            통신사 유동인구 통계, 요일·시간대별 카드 결제 데이터, 배후 오피스 소비 성향을 딥러닝으로 분석하여 상권의 실제 소비 흡인력을 측정합니다.
+          </p>
+          <ul class="space-y-2 mb-6 text-xs text-slate-400">
+            <li class="flex items-center gap-2">✓ 시간대별 유동인구 체류 시간 추적</li>
+            <li class="flex items-center gap-2">✓ 반경 500m 내 경쟁 업종 카드 매출 비교</li>
+          </ul>
+        </div>
+        <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs">
+          <span class="font-semibold text-emerald-400 tabular-nums">예측 정확도 94.6%</span>
+          <span class="text-slate-400 group-hover:text-blue-400 font-medium">자세히 보기 →</span>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div data-category="finance" class="service-card group bg-[#0F172A] hover:bg-[#1E293B] border border-slate-800 hover:border-slate-700 rounded-2xl p-6 transition-all duration-300 shadow-lg cursor-pointer flex flex-col justify-between" onclick="showServiceDetail(1)">
+        <div>
+          <div class="flex items-center gap-4 mb-5">
+            <div class="w-14 h-14 bg-emerald-600 text-white rounded-xl flex items-center justify-center shadow-md group-hover:scale-105 transition-transform duration-300">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-white group-hover:text-blue-300 transition-colors">회생 금융 브릿지</h3>
+              <p class="text-xs text-slate-400 mt-0.5">부채 재구조화 & 저리 대환대출</p>
+            </div>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed mb-5">
+            고금리 다중채무를 지자체 특례보증 및 2~3%대 정책 자금으로 대환하고 상환 스케줄을 재설계하여 당장의 현금 유동성을 확보합니다.
+          </p>
+          <ul class="space-y-2 mb-6 text-xs text-slate-400">
+            <li class="flex items-center gap-2">✓ 평균 금리 3.8%p 인하 대환 스트럭처링</li>
+            <li class="flex items-center gap-2">✓ 원금 상환 유예 및 거치 기간 3년 연장</li>
+          </ul>
+        </div>
+        <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs">
+          <span class="font-semibold text-emerald-400 tabular-nums">월평균 이자 절감 148만 원</span>
+          <span class="text-slate-400 group-hover:text-blue-400 font-medium">자세히 보기 →</span>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div data-category="consulting" class="service-card group bg-[#0F172A] hover:bg-[#1E293B] border border-slate-800 hover:border-slate-700 rounded-2xl p-6 transition-all duration-300 shadow-lg cursor-pointer flex flex-col justify-between" onclick="showServiceDetail(2)">
+        <div>
+          <div class="flex items-center gap-4 mb-5">
+            <div class="w-14 h-14 bg-amber-500 text-white rounded-xl flex items-center justify-center shadow-md group-hover:scale-105 transition-transform duration-300">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h18v18H3V3z"></path></svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-white group-hover:text-blue-300 transition-colors">업종 & 메뉴 리밸런싱</h3>
+              <p class="text-xs text-slate-400 mt-0.5">공급 과잉 탈피 & 타깃 메뉴 재편</p>
+            </div>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed mb-5">
+            상권 내 포화된 레드오션 메뉴를 걷어내고, 배후 소비군이 선호하는 단가와 키워드를 추출하여 즉시 매출로 직결되는 시그니처를 처방합니다.
+          </p>
+          <ul class="space-y-2 mb-6 text-xs text-slate-400">
+            <li class="flex items-center gap-2">✓ 식자재 원가율 30% 이하 타깃 메뉴 엔지니어링</li>
+            <li class="flex items-center gap-2">✓ 배달/홀/테이크아웃 매출 믹스 최적화</li>
+          </ul>
+        </div>
+        <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs">
+          <span class="font-semibold text-emerald-400 tabular-nums">원가율 12%p 절감</span>
+          <span class="text-slate-400 group-hover:text-blue-400 font-medium">자세히 보기 →</span>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div data-category="consulting" class="service-card group bg-[#0F172A] hover:bg-[#1E293B] border border-slate-800 hover:border-slate-700 rounded-2xl p-6 transition-all duration-300 shadow-lg cursor-pointer flex flex-col justify-between" onclick="showServiceDetail(3)">
+        <div>
+          <div class="flex items-center gap-4 mb-5">
+            <div class="w-14 h-14 bg-indigo-600 text-white rounded-xl flex items-center justify-center shadow-md group-hover:scale-105 transition-transform duration-300">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-white group-hover:text-blue-300 transition-colors">임대료 & 원가 최적화</h3>
+              <p class="text-xs text-slate-400 mt-0.5">빅데이터 임대료 감정 & 비용 슬림화</p>
+            </div>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed mb-5">
+            인근 실거래가 및 공실률 통계를 토대로 임대료 재협상 가이드라인을 제공하고, 로컬 연합 식자재 공급망을 통해 고정비를 대폭 절감합니다.
+          </p>
+          <ul class="space-y-2 mb-6 text-xs text-slate-400">
+            <li class="flex items-center gap-2">✓ 공실률 연동 적정 임대료 산출 리포트</li>
+            <li class="flex items-center gap-2">✓ 지역 연합 식자재 공동구매 직거래 라인</li>
+          </ul>
+        </div>
+        <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs">
+          <span class="font-semibold text-emerald-400 tabular-nums">고정비 평균 21% 절감</span>
+          <span class="text-slate-400 group-hover:text-blue-400 font-medium">자세히 보기 →</span>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div data-category="finance" class="service-card group bg-[#0F172A] hover:bg-[#1E293B] border border-slate-800 hover:border-slate-700 rounded-2xl p-6 transition-all duration-300 shadow-lg cursor-pointer flex flex-col justify-between" onclick="showServiceDetail(4)">
+        <div>
+          <div class="flex items-center gap-4 mb-5">
+            <div class="w-14 h-14 bg-sky-500 text-white rounded-xl flex items-center justify-center shadow-md group-hover:scale-105 transition-transform duration-300">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"></path></svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-white group-hover:text-blue-300 transition-colors">지자체 상생펀드 매칭</h3>
+              <p class="text-xs text-slate-400 mt-0.5">소진공·지역신보 정책 자금 연계</p>
+            </div>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed mb-5">
+            복잡한 정책 자금 공고를 실시간 스크리닝하여 우리 매장에 가장 유리한 무이자·저리 보증 기금을 1:1로 매칭하고 전 과정을 대행합니다.
+          </p>
+          <ul class="space-y-2 mb-6 text-xs text-slate-400">
+            <li class="flex items-center gap-2">✓ 소상공인 특별경영안정자금 연계</li>
+            <li class="flex items-center gap-2">✓ 서류 심사 간소화 및 원스톱 보증 신청</li>
+          </ul>
+        </div>
+        <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs">
+          <span class="font-semibold text-emerald-400 tabular-nums">누적 승인율 98.2%</span>
+          <span class="text-slate-400 group-hover:text-blue-400 font-medium">자세히 보기 →</span>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div data-category="data" class="service-card group bg-[#0F172A] hover:bg-[#1E293B] border border-slate-800 hover:border-slate-700 rounded-2xl p-6 transition-all duration-300 shadow-lg cursor-pointer flex flex-col justify-between" onclick="showServiceDetail(5)">
+        <div>
+          <div class="flex items-center gap-4 mb-5">
+            <div class="w-14 h-14 bg-rose-500 text-white rounded-xl flex items-center justify-center shadow-md group-hover:scale-105 transition-transform duration-300">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-white group-hover:text-blue-300 transition-colors">폐업 조기경보 시스템</h3>
+              <p class="text-xs text-slate-400 mt-0.5">현금흐름 이상 감지 & 골든타임 60일</p>
+            </div>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed mb-5">
+            매출 급감, 객단가 하락, 고정비 체납 등 7대 핵심 리스크 지표를 상시 모니터링하여 회생 가능한 골든타임 내에 신속 개입합니다.
+          </p>
+          <ul class="space-y-2 mb-6 text-xs text-slate-400">
+            <li class="flex items-center gap-2">✓ 실시간 매출 변동성 계측 및 이상 징후 알림</li>
+            <li class="flex items-center gap-2">✓ 위기 감지 시 48시간 내 컨설턴트 파견</li>
+          </ul>
+        </div>
+        <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs">
+          <span class="font-semibold text-emerald-400 tabular-nums">골든타임 62일 조기 확보</span>
+          <span class="text-slate-400 group-hover:text-blue-400 font-medium">자세히 보기 →</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 5. INTERACTIVE SIMULATOR (Live Math + White Diagnostic Card) -->
+  <!-- ============================================================ -->
+  <section id="simulator" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+    <div class="text-center max-w-3xl mx-auto mb-14">
+      <div class="flex items-center justify-center gap-2 text-xs font-semibold text-blue-400 mb-2">
+        <span>무료 인터랙티브 진단</span>
+        <span aria-hidden="true">·</span>
+        <span>핀테크 알고리즘 v3.4</span>
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+        내 매장 실시간 AI 회생 진단 & ROI 시뮬레이터
+      </h2>
+      <p class="mt-3 text-slate-300 text-sm sm:text-base leading-relaxed">
+        지역, 업종, 현재 금융 조건을 입력하시면 빅데이터 알고리즘이 예상 매출 회복률과
+        월 절감 가능한 금융 비용을 즉시 산출해 드립니다.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+      
+      <!-- Left: Simulator Controls -->
+      <div class="lg:col-span-5 bg-[#0F172A] border border-slate-800 rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-xl">
+        <div>
+          <div class="flex items-center gap-2 pb-4 border-b border-slate-800 text-white font-bold text-sm">
+            <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+            <span>진단 조건 입력 (실시간 반영)</span>
+          </div>
+
+          <div class="mt-6 space-y-5">
+            <div>
+              <label class="block text-xs font-medium text-slate-300 mb-1.5">상권 지역 선택</label>
+              <select id="simRegion" onchange="runSimulation()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-blue-500 cursor-pointer">
+                <option value="1.15">서울 마포구 (홍대·연남·상수)</option>
+                <option value="1.25">서울 성동구 (성수·서울숲)</option>
+                <option value="1.10">서울 강남구 (신사·역삼·선릉)</option>
+                <option value="1.18">서울 종로/중구 (익선·을지로)</option>
+                <option value="1.12">경기 성남시 (판교·분당)</option>
+                <option value="1.22">경기 수원시 (행궁동·인계)</option>
+                <option value="1.28">부산 부산진구 (전포·서면)</option>
+                <option value="1.20">대구 중구 (동성로·삼덕)</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs font-medium text-slate-300 mb-1.5">매장 업종 분류</label>
+              <select id="simIndustry" onchange="runSimulation()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-blue-500 cursor-pointer">
+                <option value="32">카페 / 베이커리 / 디저트</option>
+                <option value="28">일반음식점 (한식·주점·양식)</option>
+                <option value="24">뷰티 / 헤어 / 네일샵</option>
+                <option value="36">패션 / 라이프스타일 셀렉트숍</option>
+                <option value="22">생활서비스 / 공방 / 교육</option>
+              </select>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-xs text-slate-300 mb-1">
+                <span>현재 월 평균 매출</span>
+                <span id="salesValText" class="font-bold text-blue-400 tabular-nums">1,800 만 원</span>
+              </div>
+              <input type="range" id="simSales" min="500" max="6000" step="100" value="1800" oninput="runSimulation()" class="w-full accent-blue-500 h-1.5 bg-slate-800 rounded-lg cursor-pointer" />
+              <div class="flex justify-between text-[10px] text-slate-500 mt-1">
+                <span>500만 원</span>
+                <span>3,000만 원</span>
+                <span>6,000만 원</span>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-xs text-slate-300 mb-1">
+                <span>현재 사업자 총 부채 (대출금)</span>
+                <span id="debtValText" class="font-bold text-blue-400 tabular-nums">8,000 만 원</span>
+              </div>
+              <input type="range" id="simDebt" min="1000" max="25000" step="500" value="8000" oninput="runSimulation()" class="w-full accent-blue-500 h-1.5 bg-slate-800 rounded-lg cursor-pointer" />
+              <div class="flex justify-between text-[10px] text-slate-500 mt-1">
+                <span>1,000만 원</span>
+                <span>1억 원</span>
+                <span>2.5억 원</span>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-xs text-slate-300 mb-1">
+                <span>현재 대출 평균 금리 (연이율)</span>
+                <span id="rateValText" class="font-bold text-emerald-400 tabular-nums">9.5%</span>
+              </div>
+              <input type="range" id="simRate" min="4.0" max="18.0" step="0.5" value="9.5" oninput="runSimulation()" class="w-full accent-emerald-500 h-1.5 bg-slate-800 rounded-lg cursor-pointer" />
+              <div class="flex justify-between text-[10px] text-slate-500 mt-1">
+                <span>4.0%</span>
+                <span>10.0%</span>
+                <span>18.0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-6 mt-6 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
+          <span>알고리즘: RevivalX Engine v3.4</span>
+          <button onclick="runSimulation()" class="text-blue-400 hover:text-blue-300 flex items-center gap-1 cursor-pointer">
+            <span>실시간 재계산 완료</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Right: Pristine White Diagnostic Card -->
+      <div class="lg:col-span-7 bg-white text-slate-900 rounded-2xl p-6 sm:p-8 shadow-2xl border border-slate-200 flex flex-col justify-between">
+        <div>
+          <div class="flex flex-wrap items-center justify-between pb-4 border-b border-slate-200 gap-3">
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded">진단 리포트 No. RX-2026</span>
+                <span id="reportSubRegion" class="text-xs text-slate-500">서울 마포 상권</span>
+              </div>
+              <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900 mt-1">상권 회생 잠재력 종합 진단 결과</h3>
+            </div>
+            <div class="flex items-center gap-2 bg-emerald-50 text-emerald-700 px-3 py-1 rounded-xl border border-emerald-100 font-bold text-xs">
+              <span>회생 가능 등급: <strong id="resRiskBadge">회생유력</strong></span>
+            </div>
+          </div>
+
+          <!-- KPI Metric Triad -->
+          <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-150">
+              <p class="text-xs text-slate-500">상권 회생 지수</p>
+              <p class="text-2xl sm:text-3xl font-extrabold text-blue-600 tabular-nums mt-1">
+                <span id="resScore">86</span> <span class="text-sm font-medium text-slate-600">/ 100</span>
+              </p>
+              <p class="text-[11px] text-slate-500 mt-1">동일 상권 상위 18%</p>
+            </div>
+
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-150">
+              <p class="text-xs text-slate-500">예상 매출 반등폭</p>
+              <p class="text-2xl sm:text-3xl font-extrabold text-emerald-600 tabular-nums mt-1">
+                +<span id="resSalesGrowth">35</span>%
+              </p>
+              <p class="text-[11px] text-slate-500 mt-1">월 +<span id="resSalesIncr">630</span>만 원 증가</p>
+            </div>
+
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-150">
+              <p class="text-xs text-slate-500">월 예상 비용 절감</p>
+              <p class="text-2xl sm:text-3xl font-extrabold text-slate-900 tabular-nums mt-1">
+                <span id="resMonthlySaving">150</span> <span class="text-sm font-medium text-slate-600">만 원/월</span>
+              </p>
+              <p class="text-[11px] text-slate-500 mt-1">금리 <span id="resRateCut">6.3</span>%p 인하 효과</p>
+            </div>
+          </div>
+
+          <!-- Prescription Box -->
+          <div class="mt-6 bg-blue-50/70 rounded-xl p-5 border border-blue-150">
+            <h4 class="text-xs font-bold text-blue-900 mb-2 flex items-center gap-1.5">
+              <span>AI 권장 맞춤형 회생 처방전 (Action Points)</span>
+            </h4>
+            <ul id="resActionList" class="space-y-2 mt-3 text-xs text-slate-800">
+              <li class="flex items-start gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-blue-600 mt-1.5 shrink-0"></span>
+                <span>1단계: 고금리 채무를 3.2% 지자체 상생펀드로 전액 대환하여 매월 고정 이자 즉시 절감</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-blue-600 mt-1.5 shrink-0"></span>
+                <span>2단계: 시간대별 유동인구 결제 단가 분석을 통한 시그니처 메뉴/서비스 리포지셔닝</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-blue-600 mt-1.5 shrink-0"></span>
+                <span>3단계: 지역 식자재 공동구매 직거래 라인 연결을 통한 원가율 12%p 슬림화</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Policy Programs -->
+          <div class="mt-4 pt-4 border-t border-slate-150">
+            <p class="text-[11px] font-semibold text-slate-500 mb-1.5">즉시 연계 가능한 정부·지자체 정책 펀드:</p>
+            <div class="flex flex-wrap gap-2 text-xs text-slate-700">
+              <span class="bg-slate-100 px-2.5 py-1 rounded-md font-medium text-[11px]">2026 소상공인 재도약 특별경영안정자금 (최대 1억 원, 2.8~3.2%)</span>
+              <span class="bg-slate-100 px-2.5 py-1 rounded-md font-medium text-[11px]">지자체 상권 활성화 특례보증</span>
+              <span class="bg-slate-100 px-2.5 py-1 rounded-md font-medium text-[11px]">RevivalX 1:1 현장 바우처</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 pt-5 border-t border-slate-200 flex flex-wrap items-center justify-between gap-4">
+          <button id="pdfDownloadBtn" onclick="downloadReportSim()" class="inline-flex items-center gap-2 text-xs font-semibold text-slate-700 hover:text-slate-900 cursor-pointer bg-slate-100 hover:bg-slate-200 px-4 py-2.5 rounded-xl transition-colors">
+            <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+            <span id="pdfBtnText">정밀 진단서 PDF 다운로드</span>
+          </button>
+
+          <button onclick="openModalWithCurrentData()" class="px-6 py-2.5 text-xs font-semibold text-white bg-blue-600 hover:bg-blue-500 active:bg-blue-700 rounded-xl transition-all shadow-md shadow-blue-500/20 flex items-center gap-2 cursor-pointer">
+            <span>이 조건으로 1:1 현장 무료 컨설팅 신청</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 6. JOB CREATION REPORT (신직업: AI 상권회생 핀테크 컨설턴트) -->
+  <!-- ============================================================ -->
+  <section id="job-vision" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+      <div>
+        <div class="flex items-center gap-2 text-xs font-semibold text-emerald-400 mb-2">
+          <span>대한민국 신직업 발굴 보고서</span>
+          <span aria-hidden="true">·</span>
+          <span>창직(創職) 프로젝트</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          신직업: AI 상권회생 핀테크 컨설턴트
+        </h2>
+        <p class="mt-3 text-slate-300 text-sm sm:text-base max-w-2xl leading-relaxed">
+          폐업 절벽에 선 소상공인과 침체된 지역 상권을 구하기 위해,
+          빅데이터 분석력과 핀테크 금융공학을 융합하여 탄생한 차세대 전문직입니다.
+        </p>
+      </div>
+
+      <button onclick="openModal('consultModal')" class="px-5 py-2.5 text-xs font-semibold text-white bg-blue-600 hover:bg-blue-500 rounded-xl transition-all shadow-md shadow-blue-500/20 whitespace-nowrap self-start md:self-auto cursor-pointer">
+        창직 보고서 전문 열람 및 협력 문의
+      </button>
+    </div>
+
+    <!-- Feature Split with Field Photo -->
+    <div class="bg-[#0F172A] border border-slate-800 rounded-2xl overflow-hidden shadow-2xl mb-12">
+      <div class="grid grid-cols-1 lg:grid-cols-12 items-stretch">
+        
+        <div class="lg:col-span-5 relative min-h-[300px] lg:min-h-full">
+          <img
+            src="/assets/images/consultant_field_meeting_1794011420892.jpg"
+            alt="AI 상권회생 핀테크 컨설턴트 현장 1:1 데이터 진단"
+            class="w-full h-full object-cover"
+            onerror="this.src='/src/assets/images/consultant_field_meeting_1794011420892.jpg'"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-[#0F172A]"></div>
+          <div class="absolute bottom-6 left-6 right-6 p-4 bg-[#0B1120]/90 backdrop-blur-md rounded-xl border border-slate-700/80 text-white">
+            <p class="text-[11px] text-emerald-400 font-semibold">현장 밀착형 턴어라운드</p>
+            <p class="text-xs font-medium mt-1 text-slate-200">
+              “숫자에 갇히지 않고, 사장님의 매장 현장에서 직접 데이터와 금융 해법을 풀어냅니다.”
+            </p>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 p-8 sm:p-12 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-2 text-xs font-bold text-blue-400 mb-3">
+              <span>왜 이 새로운 직업이 필요한가? (창직 배경)</span>
+            </div>
+
+            <h3 class="text-2xl font-bold text-white leading-snug">
+              기존 단순 컨설팅의 한계와 자영업 부채의 구조적 위기
+            </h3>
+
+            <div class="mt-6 space-y-4 text-xs sm:text-sm text-slate-300 leading-relaxed">
+              <div class="p-4 bg-slate-900/80 rounded-xl border border-slate-800">
+                <h4 class="font-bold text-white text-xs mb-1 flex items-center gap-1.5">
+                  <span class="text-red-400 font-mono">01.</span>
+                  기존 소상공인 컨설팅의 치명적 한계
+                </h4>
+                <p class="text-slate-400 text-xs">
+                  단순 SNS 마케팅 홍보나 인테리어 변경 위주의 피상적 컨설팅은 매월 숨통을 조여오는 고금리 대출 원리금과 구조적 상권 침체를 결코 해결하지 못했습니다.
+                </p>
+              </div>
+
+              <div class="p-4 bg-slate-900/80 rounded-xl border border-slate-800">
+                <h4 class="font-bold text-white text-xs mb-1 flex items-center gap-1.5">
+                  <span class="text-red-400 font-mono">02.</span>
+                  기존 금융권의 정밀 평가 데이터 부재
+                </h4>
+                <p class="text-slate-400 text-xs">
+                  제1·2금융권은 과거 매출과 단순 신용등급에만 의존하여 당장 유동성이 필요한 소상공인에게 저리 정책 자금을 제때 공급하지 못해 폐업을 가속화시켰습니다.
+                </p>
+              </div>
+
+              <div class="p-4 bg-blue-950/40 rounded-xl border border-blue-900/50">
+                <h4 class="font-bold text-blue-300 text-xs mb-1 flex items-center gap-1.5">
+                  <span class="text-emerald-400 font-mono">03.</span>
+                  융합 솔루션: AI 빅데이터 + 핀테크 금융공학의 결합
+                </h4>
+                <p class="text-slate-300 text-xs">
+                  상권의 미래 소비 회복 잠재력을 정밀하게 예측하고, 이를 근거로 지자체 및 정책 펀드를 매칭해 부채를 재구조화할 수 있는 새로운 전문 인력인 <strong>[AI 상권회생 핀테크 컨설턴트]</strong>가 탄생했습니다.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8 pt-6 border-t border-slate-800 flex items-center justify-between text-xs">
+            <span class="text-slate-400">직무 분류: 고용노동부·중기부 미래 유망 융합 신직업군</span>
+            <span class="text-emerald-400 font-semibold">취업·창직 연계 프로그램 운영 중</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 Core Competency Pillars (Editorial) -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-white text-slate-900 rounded-2xl p-6 sm:p-7 shadow-xl border border-slate-100 flex flex-col justify-between">
+        <div>
+          <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-5 font-bold">
+            01
+          </div>
+          <p class="text-xs font-bold text-blue-600 tracking-wider">DATA INTELLIGENCE</p>
+          <h4 class="text-lg font-bold text-slate-900 mt-1">상권 빅데이터 정밀 분석력</h4>
+          <p class="text-xs text-slate-600 mt-3 leading-relaxed">
+            GIS 지도 기반 통신사 유동인구 이동 동선, 시간대별 카드 소비 단가, 공실률 변화를 분석하여 상권의 쇠퇴 원인을 수학적으로 규명합니다.
+          </p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-slate-100 text-[11px] text-slate-500 space-y-1">
+          <p>✓ GIS 공간정보 & 통신·카드 데이터 분석</p>
+          <p>✓ 머신러닝 기반 6개월 매출 예측 모델 운용</p>
+        </div>
+      </div>
+
+      <div class="bg-white text-slate-900 rounded-2xl p-6 sm:p-7 shadow-xl border border-slate-100 flex flex-col justify-between">
+        <div>
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-5 font-bold">
+            02
+          </div>
+          <p class="text-xs font-bold text-emerald-600 tracking-wider">FINTECH RESTRUCTURING</p>
+          <h4 class="text-lg font-bold text-slate-900 mt-1">핀테크 부채 재구조화 공학</h4>
+          <p class="text-xs text-slate-600 mt-3 leading-relaxed">
+            고금리 다중채무를 지자체 특례보증 및 정책 자금으로 대환하고 원리금 상환 유예를 설계하여 가용 월 현금흐름을 확보합니다.
+          </p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-slate-100 text-[11px] text-slate-500 space-y-1">
+          <p>✓ 평균 금리 3.8%p 인하 스트럭처링</p>
+          <p>✓ DSR 재설계 및 신용 회복 로드맵 구축</p>
+        </div>
+      </div>
+
+      <div class="bg-white text-slate-900 rounded-2xl p-6 sm:p-7 shadow-xl border border-slate-100 flex flex-col justify-between">
+        <div>
+          <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-5 font-bold">
+            03
+          </div>
+          <p class="text-xs font-bold text-indigo-600 tracking-wider">LOCAL PIVOT & EXECUTION</p>
+          <h4 class="text-lg font-bold text-slate-900 mt-1">상권 생태계 리밸런싱 실행</h4>
+          <p class="text-xs text-slate-600 mt-3 leading-relaxed">
+            과잉 경쟁 업종을 타깃 소비 트렌드에 부합하는 시그니처 아이템으로 리포지셔닝하고 식자재 공동구매망을 구축하여 원가율을 낮춥니다.
+          </p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-slate-100 text-[11px] text-slate-500 space-y-1">
+          <p>✓ 식자재 원가율 12%p 절감 직거래 연계</p>
+          <p>✓ 상권 팝업 및 로컬 브랜딩 공동 기획</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 7. MID BANNER & TRUST PROOF (Benchmarking Mid Photo Banner)  -->
+  <!-- ============================================================ -->
+  <section id="metrics" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+    <div class="relative rounded-2xl overflow-hidden border border-slate-800 bg-[#0F172A] shadow-2xl">
+      <div class="relative min-h-[460px] flex items-center">
+        <img
+          src="/assets/images/report_mockup_dashboard_1794011420309.jpg"
+          alt="RevivalX 상권 회생 전략 보고서 및 태블릿 대시보드"
+          class="absolute inset-0 w-full h-full object-cover opacity-35"
+          onerror="this.src='/src/assets/images/report_mockup_dashboard_1794011420309.jpg'"
+        />
+        <div class="absolute inset-0 bg-gradient-to-r from-[#0B1120] via-[#0B1120]/90 to-[#0B1120]/60"></div>
+
+        <div class="relative z-10 p-8 sm:p-14 lg:p-16 max-w-3xl">
+          <div class="flex items-center gap-2 text-xs font-bold text-emerald-400 mb-3">
+            <span>검증된 실효성</span>
+            <span aria-hidden="true">·</span>
+            <span>지자체 및 금융기관 협력</span>
+          </div>
+
+          <h2 class="text-2xl sm:text-4xl font-extrabold text-white leading-tight tracking-tight">
+            RevivalX는 벼랑 끝 골목상권에
+            <span class="block mt-1 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-300 to-emerald-400">
+              데이터와 금융이라는 확실한 나침반을 세웁니다
+            </span>
+          </h2>
+
+          <p class="mt-4 text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
+            막연한 불안감 대신 정밀한 빅데이터 리포트와 실제 집행 가능한 저리 금융 대환 솔루션을 제공합니다.
+            지금 내 매장 위치와 업종을 기반으로 즉시 적용 가능한 회생 전략을 확인하세요.
+          </p>
+
+          <div class="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4 py-6 border-y border-slate-800/80">
+            <div>
+              <p class="text-2xl sm:text-3xl font-extrabold text-emerald-400 tabular-nums">87.4%</p>
+              <p class="text-xs text-slate-400 mt-1">1년 내 흑자 전환율</p>
+            </div>
+            <div>
+              <p class="text-2xl sm:text-3xl font-extrabold text-white tabular-nums">420억+</p>
+              <p class="text-xs text-slate-400 mt-1">정책 금융 매칭액</p>
+            </div>
+            <div>
+              <p class="text-2xl sm:text-3xl font-extrabold text-blue-400 tabular-nums">3,420+</p>
+              <p class="text-xs text-slate-400 mt-1">누적 진단 점포</p>
+            </div>
+            <div>
+              <p class="text-2xl sm:text-3xl font-extrabold text-emerald-400 tabular-nums">-3.8%p</p>
+              <p class="text-xs text-slate-400 mt-1">평균 금리 인하</p>
+            </div>
+          </div>
+
+          <div class="mt-8 flex flex-wrap items-center gap-4">
+            <button onclick="openModal('consultModal')" class="px-6 py-3.5 text-xs font-semibold text-white bg-blue-600 hover:bg-blue-500 active:bg-blue-700 rounded-xl transition-all shadow-lg shadow-blue-600/30 flex items-center gap-2 cursor-pointer">
+              <span>무료 현장 진단 리포트 신청하기</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </button>
+            <a href="#simulator" class="px-6 py-3.5 text-xs font-semibold text-slate-200 bg-slate-800/90 hover:bg-slate-700 border border-slate-700 rounded-xl transition-all cursor-pointer">
+              온라인 시뮬레이터 다시 해보기
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 8. FOOTER & BOTTOM INQUIRY (Benchmarking Kakao Bottom CTA)   -->
+  <!-- ============================================================ -->
+  <footer class="w-full bg-[#070D17] border-t border-slate-800 text-slate-400 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-b border-slate-800/80">
+      <div class="bg-gradient-to-r from-blue-900/40 via-slate-900 to-emerald-950/40 border border-slate-800 rounded-2xl p-8 sm:p-12 flex flex-col lg:flex-row items-center justify-between gap-8 shadow-xl">
+        <div class="max-w-2xl text-center lg:text-left">
+          <span class="text-xs font-bold text-blue-400 bg-blue-950/60 px-3 py-1 rounded-full border border-blue-800/60">
+            상권 회생 무료 상담 핫라인
+          </span>
+          <h3 class="text-2xl sm:text-3xl font-bold text-white mt-3 leading-snug">
+            RevivalX의 정밀 상권 데이터와
+            <span class="block text-blue-400">금융 회생 솔루션에 대해 자세히 알아보세요</span>
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-300 mt-2">
+            혼자 고민하지 마세요. 전문 컨설턴트가 데이터 기반의 가장 유리한 턴어라운드 경로를 제시합니다.
+          </p>
+        </div>
+
+        <div class="w-full lg:w-auto shrink-0 flex flex-col sm:flex-row items-center gap-3">
+          <button onclick="openModal('consultModal')" class="w-full sm:w-auto px-7 py-4 text-sm font-bold text-white bg-blue-600 hover:bg-blue-500 active:bg-blue-700 rounded-xl transition-all shadow-lg shadow-blue-600/30 flex items-center justify-center gap-2 cursor-pointer">
+            <span>1:1 무료 컨설팅 문의하기</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Corporate info -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-12 border-b border-slate-800/60">
+        <div class="md:col-span-2">
+          <div class="flex items-center gap-2 text-white font-bold text-xl tracking-tight">
+            <span class="w-2.5 h-2.5 rounded-full bg-blue-500 inline-block"></span>
+            <span>RevivalX (리바이벌스)</span>
+          </div>
+          <p class="mt-3 text-xs text-slate-400 leading-relaxed max-w-sm">
+            상권 빅데이터 분석과 핀테크 금융 재구조화 기술을 융합하여 대한민국 골목상권과 소상공인의 실질적인 흑자 턴어라운드를 실현하는 창직 혁신 핀테크 플랫폼입니다.
+          </p>
+          <div class="mt-4 flex items-center gap-3 text-xs text-slate-400">
+            <span>지자체 공공 협약 기관</span>
+            <span>·</span>
+            <span>소상공인 상생 플랫폼</span>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-bold text-white tracking-wider mb-3">주요 솔루션</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="#solutions" class="hover:text-blue-400 transition-colors">AI 상권 레이더</a></li>
+            <li><a href="#solutions" class="hover:text-blue-400 transition-colors">회생 금융 브릿지 (대환)</a></li>
+            <li><a href="#simulator" class="hover:text-blue-400 transition-colors">AI 상권 시뮬레이터</a></li>
+            <li><a href="#job-vision" class="hover:text-blue-400 transition-colors">창직 보고서 & 직무 가이드</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-bold text-white tracking-wider mb-3">고객 및 파트너 센터</h4>
+          <div class="space-y-2 text-xs text-slate-400">
+            <p class="text-white font-semibold">1588-4290 (평일 09:00~18:00)</p>
+            <p>consult@revivalx.kr</p>
+            <p>서울특별시 강남구 테헤란로 142 아크플레이스 11층</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-8 flex flex-col md:flex-row items-center justify-between text-[11px] text-slate-500 gap-4">
+        <p>© 2026 RevivalX Co., Ltd. All rights reserved. 대한민국 신직업 발굴 창직 육성 프로젝트.</p>
+        <div class="flex items-center gap-4">
+          <button onclick="openModal('consultModal')" class="hover:text-slate-400 cursor-pointer">개인정보처리방침</button>
+          <button onclick="openModal('consultModal')" class="hover:text-slate-400 cursor-pointer">이용약관</button>
+          <button onclick="openModal('consultModal')" class="hover:text-slate-400 cursor-pointer">데이터 공시 기준</button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================ -->
+  <!-- 9. MODALS: 1:1 CONSULTATION MODAL                            -->
+  <!-- ============================================================ -->
+  <div id="consultModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+    <div class="bg-white text-slate-900 rounded-2xl max-w-xl w-full p-6 sm:p-8 shadow-2xl relative border border-slate-200 max-h-[92vh] overflow-y-auto">
+      <button onclick="closeModal('consultModal')" class="absolute top-5 right-5 text-slate-400 hover:text-slate-700 text-lg font-bold w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center cursor-pointer">
+        ✕
+      </button>
+
+      <!-- Form View -->
+      <div id="consultFormView">
+        <div class="flex items-center gap-2 text-xs font-bold text-blue-600 mb-2">
+          <span>100% 무료 현장 정밀 진단</span>
+        </div>
+
+        <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
+          전문 컨설턴트 1:1 회생 상담 신청
+        </h3>
+
+        <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+          빅데이터 기반 상권 분석 리포트와 정책 금융(저리 대환) 매칭 처방을 전문 컨설턴트가 직접 분석하여 24시간 내 유선 브리핑해 드립니다.
+        </p>
+
+        <div id="consultScoreBox" class="hidden mt-4 p-3 bg-blue-50 rounded-xl border border-blue-150 flex items-center justify-between text-xs">
+          <span class="text-blue-900 font-semibold">시뮬레이터 측정 상권 회생 지수</span>
+          <span id="consultScoreVal" class="font-bold text-blue-700 text-sm tabular-nums">86점 (회생 가능성 높음)</span>
+        </div>
+
+        <div id="consultErrorMsg" class="hidden mt-4 p-3 bg-red-50 text-red-700 rounded-xl border border-red-200 text-xs"></div>
+
+        <form id="consultForm" onsubmit="handleConsultSubmit(event)" class="mt-5 space-y-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">대표자 성함 *</label>
+              <input type="text" id="custName" required placeholder="홍길동" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white" />
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">연락처 *</label>
+              <input type="tel" id="custPhone" required placeholder="010-1234-5678" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white" />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">매장명 (상호) *</label>
+              <input type="text" id="custStore" required placeholder="예: 연남커피랩" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white" />
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">매장 소재 지역 *</label>
+              <input type="text" id="custRegion" required placeholder="예: 서울 마포구 연남동" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white" />
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">매장 업종 분류 *</label>
+            <select id="custIndustry" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white">
+              <option value="카페 / 베이커리 / 디저트">카페 / 베이커리 / 디저트</option>
+              <option value="일반음식점 (한식·주점·양식)">일반음식점 (한식·주점·양식)</option>
+              <option value="뷰티 / 헤어 / 네일">뷰티 / 헤어 / 네일</option>
+              <option value="패션 / 라이프스타일">패션 / 라이프스타일 셀렉트숍</option>
+              <option value="기타">기타 생활서비스 / 교육</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">가장 시급한 해결 과제 *</label>
+            <select id="custConcern" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white">
+              <option value="고금리 다중채무 대환 및 이자 경감">고금리 다중채무 대환 및 월 이자 부담 경감</option>
+              <option value="유동인구 급감에 따른 매출 부진 원인 분석">유동인구 급감에 따른 매출 부진 원인 분석</option>
+              <option value="공급 과잉 메뉴 탈피 및 아이템 리포지셔닝">공급 과잉 메뉴 탈피 및 신규 아이템 리포지셔닝</option>
+              <option value="임대료 재협상 가이드 및 식자재 원가 절감">임대료 재협상 가이드 및 식자재 고정 원가 절감</option>
+              <option value="지자체 소상공인 정책 펀드 신청 대행">지자체 소상공인 무이자/저리 정책 펀드 전액 신청</option>
+            </select>
+          </div>
+
+          <div class="pt-2">
+            <label class="flex items-start gap-2 text-xs text-slate-600 cursor-pointer">
+              <input type="checkbox" id="custAgree" required class="accent-blue-600 rounded mt-0.5" />
+              <span>[필수] 소상공인 상권 분석 및 1:1 컨설팅 연계를 위한 개인정보 수집 및 이용에 동의합니다. (상담 완료 후 파기)</span>
+            </label>
+          </div>
+
+          <div class="pt-4 flex items-center justify-end gap-3 border-t border-slate-150">
+            <button type="button" onclick="closeModal('consultModal')" class="px-4 py-2.5 text-xs font-semibold text-slate-600 hover:text-slate-900 cursor-pointer">
+              취소
+            </button>
+            <button type="submit" class="px-6 py-2.5 text-xs font-bold text-white bg-blue-600 hover:bg-blue-500 rounded-xl transition-all shadow-md shadow-blue-500/20 cursor-pointer">
+              무료 상담 신청 완료하기
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Success View -->
+      <div id="consultSuccessView" class="hidden py-8 text-center">
+        <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-5">
+          <svg class="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+        </div>
+        <span class="text-xs font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-full">
+          접수 번호: RX-2026-8941
+        </span>
+        <h3 class="text-2xl font-bold text-slate-900 mt-3">상담 신청이 정상 접수되었습니다!</h3>
+        <p class="mt-3 text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
+          <strong id="succName">대표님</strong>의 매장 맞춤형 상권 빅데이터 분석을 즉시 착수합니다. 
+          <strong>24시간 내 전문 컨설턴트</strong>가 유선으로 1차 사전 리포트와 함께 연락드리겠습니다.
+        </p>
+        <div class="mt-6 p-4 bg-slate-50 rounded-xl border border-slate-200 text-xs text-left max-w-md mx-auto space-y-1.5 text-slate-700">
+          <p>• 신청 매장: <strong id="succStore">매장</strong></p>
+          <p>• 연락처: <strong id="succPhone">연락처</strong></p>
+          <p>• 비용: <strong>전액 무료 (지자체·소상공인 지원 사업 연계)</strong></p>
+        </div>
+        <div class="mt-8">
+          <button onclick="closeModal('consultModal')" class="px-8 py-3 text-xs font-bold text-white bg-slate-900 hover:bg-slate-800 rounded-xl transition-colors cursor-pointer">
+            확인
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Case Modal -->
+  <div id="caseModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+    <div class="bg-white text-slate-900 rounded-2xl max-w-xl w-full p-6 sm:p-8 shadow-2xl relative border border-slate-200 max-h-[90vh] overflow-y-auto">
+      <button onclick="closeModal('caseModal')" class="absolute top-5 right-5 text-slate-400 hover:text-slate-700 text-lg font-bold w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center cursor-pointer">
+        ✕
+      </button>
+      <div class="flex items-center gap-2 text-xs text-blue-600 font-semibold mb-2">
+        <span>상권 공동 회생 대표 사례</span>
+        <span>·</span>
+        <span>서울 마포구</span>
+      </div>
+      <h3 class="text-xl sm:text-2xl font-bold text-slate-900 leading-snug">
+        마포 연남 골목상권 14개 점포 연합 회생 프로젝트 정밀 분석 보고서
+      </h3>
+      <div class="mt-4 rounded-xl overflow-hidden h-48 bg-slate-100">
+        <img src="/assets/images/store_turnaround_story_1794011421640.jpg" alt="회생 사례" class="w-full h-full object-cover" onerror="this.src='/src/assets/images/store_turnaround_story_1794011421640.jpg'" />
+      </div>
+      <div class="mt-5 text-sm text-slate-700 leading-relaxed space-y-3">
+        <p>
+          코로나 이후 고금리와 유동인구 분산으로 폐업 위기에 놓인 14개 점포를 대상으로 RevivalX 컨설턴트 3인이 3개월간 밀착 개입했습니다.
+        </p>
+        <div class="p-4 bg-blue-50 rounded-xl border border-blue-100 text-xs text-slate-800 space-y-1.5">
+          <p class="font-bold text-blue-900">RevivalX 적용 솔루션:</p>
+          <p>1. 유동인구 20대 여성 집중 시간대 파악 후 F&B 메뉴 리밸런싱</p>
+          <p>2. 평균 9.8%대 2금융권 채무를 3.2% 지자체 상생펀드로 전액 대환</p>
+          <p>3. 상권 내 유휴 공간을 활용한 팝업 스토어 및 마케팅 얼라이언스 결성</p>
+        </div>
+      </div>
+      <div class="mt-6 pt-4 border-t border-slate-200 grid grid-cols-3 gap-3 text-center">
+        <div class="bg-slate-50 p-3 rounded-lg">
+          <p class="text-[11px] text-slate-500">매출 성장</p>
+          <p class="text-lg font-bold text-emerald-600 mt-0.5 tabular-nums">+42.8%</p>
+        </div>
+        <div class="bg-slate-50 p-3 rounded-lg">
+          <p class="text-[11px] text-slate-500">이자율 경감</p>
+          <p class="text-lg font-bold text-blue-600 mt-0.5 tabular-nums">-4.2%p</p>
+        </div>
+        <div class="bg-slate-50 p-3 rounded-lg">
+          <p class="text-[11px] text-slate-500">흑자 전환</p>
+          <p class="text-lg font-bold text-emerald-600 mt-0.5 tabular-nums">14개소 전원</p>
+        </div>
+      </div>
+      <div class="mt-6 flex justify-end">
+        <button onclick="closeModal('caseModal')" class="px-5 py-2.5 text-xs font-semibold text-white bg-slate-900 hover:bg-slate-800 rounded-xl transition-colors cursor-pointer">
+          닫기
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Service Detail Modal -->
+  <div id="serviceModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+    <div class="bg-white text-slate-900 rounded-2xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative border border-slate-200">
+      <button onclick="closeModal('serviceModal')" class="absolute top-5 right-5 text-slate-400 hover:text-slate-700 text-lg font-bold w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center cursor-pointer">
+        ✕
+      </button>
+      <div class="flex items-center gap-3 mb-4">
+        <div id="modalSvcIcon" class="w-12 h-12 bg-blue-600 text-white rounded-xl flex items-center justify-center shadow font-bold text-lg">
+          RX
+        </div>
+        <div>
+          <h3 id="modalSvcName" class="text-xl font-bold text-slate-900">서비스명</h3>
+          <p id="modalSvcTagline" class="text-xs text-slate-500">태그라인</p>
+        </div>
+      </div>
+      <p id="modalSvcDesc" class="text-sm text-slate-700 leading-relaxed mt-2">
+        설명 내용
+      </p>
+      <div class="mt-5 p-4 bg-slate-50 rounded-xl border border-slate-150">
+        <h4 class="text-xs font-bold text-slate-800 mb-2">핵심 실행 로드맵</h4>
+        <ul id="modalSvcFeatures" class="space-y-2 text-xs text-slate-600"></ul>
+      </div>
+      <div class="mt-5 flex items-center justify-between text-xs">
+        <span class="text-slate-500">도입 성과 지표:</span>
+        <span id="modalSvcMetrics" class="font-bold text-emerald-600 text-sm tabular-nums">성과 지표</span>
+      </div>
+      <div class="mt-6 flex justify-end gap-3">
+        <button onclick="closeModal('serviceModal')" class="px-4 py-2 text-xs font-semibold text-slate-600 hover:text-slate-900 cursor-pointer">
+          닫기
+        </button>
+        <a href="#simulator" onclick="closeModal('serviceModal')" class="px-5 py-2.5 text-xs font-semibold text-white bg-blue-600 hover:bg-blue-500 rounded-xl transition-colors cursor-pointer">
+          우리 매장 적용 진단하기
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- 10. JAVASCRIPT LOGIC (Fully Integrated in index.html)        -->
+  <!-- ============================================================ -->
+  <script>
+    // Data definition for services
+    const SERVICES_DATA = [
+      {
+        name: 'AI 상권 레이더',
+        tagline: '통신·카드 빅데이터 실시간 분석',
+        desc: '통신사 유동인구 인구통계, 요일·시간대별 카드 결제 데이터, 배후 주거·오피스 소비 성향을 딥러닝으로 분석하여 상권의 실제 소비 흡인력을 측정합니다.',
+        features: [
+          '시간대별/성별/연령별 유동인구 체류 시간 추적',
+          '반경 500m 내 경쟁 업종 카드 매출 비교',
+          '신규 상권 유입 고객 재방문율 시계열 예측'
+        ],
+        metrics: '상권 예측 정확도 94.6%'
+      },
+      {
+        name: '회생 금융 브릿지',
+        tagline: '부채 재구조화 & 저리 대환대출',
+        desc: '평균 9~15% 고금리 다중채무를 지자체 특례보증 및 1금융권 2~3%대 정책 자금으로 대환하고, 상환 스케줄을 재설계하여 당장의 현금 유동성을 확보합니다.',
+        features: [
+          '평균 금리 3.8%p 인하 대환 스트럭처링',
+          '원금 상환 유예 및 거치 기간 3년 연장',
+          '소상공인 1:1 맞춤형 신용도 회복 프로그램'
+        ],
+        metrics: '월평균 이자 절감 148만 원'
+      },
+      {
+        name: '업종 & 메뉴 리밸런싱',
+        tagline: '공급 과잉 탈피 & 타깃 메뉴 리포지셔닝',
+        desc: '상권 내 포화된 레드오션 메뉴를 걷어내고, 배후 고객군이 선호하는 결제 단가와 트렌드 키워드를 추출하여 즉시 매출로 직결되는 시그니처 구성을 처방합니다.',
+        features: [
+          '식자재 원가율 30% 이하 타깃 메뉴 엔지니어링',
+          '배달/홀/테이크아웃 매출 믹스 최적화',
+          '점포 브랜딩 및 로컬 팝업 협업 전략 지원'
+        ],
+        metrics: '식자재 원가율 12%p 절감'
+      },
+      {
+        name: '임대료 & 원가 최적화',
+        tagline: '빅데이터 적정 임대료 감정 & 비용 슬림화',
+        desc: '인근 실거래가 및 공실률 통계를 토대로 임대인과의 임대료 재협상 가이드라인을 제공하고, 로컬 연합 식자재 공급망을 통해 고정비를 대폭 절감합니다.',
+        features: [
+          '상권 공실률 연동 적정 임대료 산출 리포트',
+          '임대인 상생 협약 체결 및 세무 혜택 안내',
+          '지역 연합 식자재 공동구매 직거래 라인'
+        ],
+        metrics: '고정비 평균 21% 절감'
+      },
+      {
+        name: '지자체 상생펀드 매칭',
+        tagline: '소진공·지역신보 정책 자금 100% 연계',
+        desc: '복잡한 정책 자금 공고를 실시간 스크리닝하여 우리 매장에 가장 유리한 무이자·저리 보증 기금을 1:1로 매칭하고 전 과정을 대행합니다.',
+        features: [
+          '지역별 소상공인 특별경영안정자금 연계',
+          '서류 심사 간소화 및 원스톱 보증 신청',
+          '재도약 지원 바우처 사업비 2,000만 원 확보'
+        ],
+        metrics: '누적 승인율 98.2%'
+      },
+      {
+        name: '폐업 조기경보 시스템',
+        tagline: '현금흐름 이상 감지 & 골든타임 60일',
+        desc: '매출 급감, 객단가 하락, 고정비 체납 등 7대 핵심 리스크 지표를 상시 모니터링하여 파산 직전이 아닌 회생 가능한 골든타임 내에 신속 개입합니다.',
+        features: [
+          '실시간 매출 변동성 계측 및 이상 징후 알림',
+          'DSR(총부채원리금상환비율) 실시간 산출',
+          '위기 감지 시 48시간 내 현장 회생 컨설턴트 파견'
+        ],
+        metrics: '골든타임 62일 조기 확보'
+      }
+    ];
+
+    // Mobile menu toggle
+    function toggleMobileMenu() {
+      const drawer = document.getElementById('mobileDrawer');
+      drawer.classList.toggle('hidden');
+    }
+
+    // Modal controls
+    function openModal(modalId) {
+      document.getElementById(modalId).classList.remove('hidden');
+    }
+    function closeModal(modalId) {
+      document.getElementById(modalId).classList.add('hidden');
+    }
+
+    // Service detail
+    function showServiceDetail(index) {
+      const s = SERVICES_DATA[index];
+      if (!s) return;
+      document.getElementById('modalSvcName').textContent = s.name;
+      document.getElementById('modalSvcTagline').textContent = s.tagline;
+      document.getElementById('modalSvcDesc').textContent = s.desc;
+      document.getElementById('modalSvcMetrics').textContent = s.metrics;
+
+      const featContainer = document.getElementById('modalSvcFeatures');
+      featContainer.innerHTML = '';
+      s.features.forEach((f, i) => {
+        const li = document.createElement('li');
+        li.className = 'flex items-start gap-2';
+        li.innerHTML = `<span class="w-4 h-4 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-[10px] font-bold shrink-0 mt-0.5">${i + 1}</span><span>${f}</span>`;
+        featContainer.appendChild(li);
+      });
+
+      openModal('serviceModal');
+    }
+
+    // Filter services
+    function filterServices(category) {
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('bg-blue-600', 'text-white');
+        btn.classList.add('text-slate-400');
+      });
+      const activeBtn = document.getElementById('btn-filter-' + category);
+      if (activeBtn) {
+        activeBtn.classList.add('bg-blue-600', 'text-white');
+        activeBtn.classList.remove('text-slate-400');
+      }
+
+      const cards = document.querySelectorAll('.service-card');
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Simulator logic
+    function runSimulation() {
+      const regFactor = parseFloat(document.getElementById('simRegion').value);
+      const indGrowthBase = parseFloat(document.getElementById('simIndustry').value);
+      const sales = parseInt(document.getElementById('simSales').value);
+      const debt = parseInt(document.getElementById('simDebt').value);
+      const rate = parseFloat(document.getElementById('simRate').value);
+
+      // Update text
+      document.getElementById('salesValText').textContent = sales.toLocaleString() + ' 만 원';
+      document.getElementById('debtValText').textContent = debt.toLocaleString() + ' 만 원';
+      document.getElementById('rateValText').textContent = rate.toFixed(1) + '%';
+
+      // Calc score
+      const rawRevival = 65 + (indGrowthBase * 0.4) + ((15 - rate) * 1.8) * (regFactor * 0.8);
+      const score = Math.min(96, Math.max(52, Math.round(rawRevival)));
+
+      // Calc sales growth
+      const salesGrowth = Math.round(indGrowthBase * (regFactor * 0.95));
+      const salesIncr = Math.round(sales * (salesGrowth / 100));
+
+      // Interest cut
+      const targetRate = 3.2;
+      const rateCut = Math.max(1.5, Number((rate - targetRate).toFixed(1)));
+      const monthlyDebtSaving = Math.round((debt * (rateCut / 100)) / 12);
+      const monthlyCostSaving = Math.round(sales * 0.06);
+      const totalSaving = monthlyDebtSaving + monthlyCostSaving;
+
+      // Update DOM
+      document.getElementById('resScore').textContent = score;
+      document.getElementById('resSalesGrowth').textContent = salesGrowth;
+      document.getElementById('resSalesIncr').textContent = salesIncr.toLocaleString();
+      document.getElementById('resMonthlySaving').textContent = totalSaving.toLocaleString();
+      document.getElementById('resRateCut').textContent = rateCut.toFixed(1);
+
+      const regSelect = document.getElementById('simRegion');
+      const regText = regSelect.options[regSelect.selectedIndex].text.split(' ')[1] || '선택';
+      document.getElementById('reportSubRegion').textContent = regText + ' 상권';
+
+      let risk = '회생유력';
+      if (score < 60) risk = '위기';
+      else if (score < 75) risk = '주의';
+      else if (score < 85) risk = '양호';
+      document.getElementById('resRiskBadge').textContent = risk;
+    }
+
+    // Pre-fill modal from current simulator state
+    function openModalWithCurrentData() {
+      const regSelect = document.getElementById('simRegion');
+      const indSelect = document.getElementById('simIndustry');
+      const score = document.getElementById('resScore').textContent;
+
+      document.getElementById('custRegion').value = regSelect.options[regSelect.selectedIndex].text;
+      document.getElementById('custIndustry').value = indSelect.options[indSelect.selectedIndex].text;
+      
+      const scoreBox = document.getElementById('consultScoreBox');
+      scoreBox.classList.remove('hidden');
+      document.getElementById('consultScoreVal').textContent = score + '점 (회생 가능성 높음)';
+
+      openModal('consultModal');
+    }
+
+    // PDF Download button feedback
+    function downloadReportSim() {
+      const btnText = document.getElementById('pdfBtnText');
+      btnText.textContent = 'PDF 리포트 저장 완료!';
+      setTimeout(() => {
+        btnText.textContent = '정밀 진단서 PDF 다운로드';
+      }, 4000);
+    }
+
+    // Handle consultation form submit
+    function handleConsultSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('custName').value.trim();
+      const phone = document.getElementById('custPhone').value.trim();
+      const store = document.getElementById('custStore').value.trim();
+      const agreed = document.getElementById('custAgree').checked;
+
+      const errBox = document.getElementById('consultErrorMsg');
+      if (!name || !phone || !store) {
+        errBox.textContent = '모든 필수 입력 항목을 작성해 주세요.';
+        errBox.classList.remove('hidden');
+        return;
+      }
+      if (!agreed) {
+        errBox.textContent = '개인정보 수집 및 이용에 동의해 주세요.';
+        errBox.classList.remove('hidden');
+        return;
+      }
+
+      errBox.classList.add('hidden');
+      document.getElementById('succName').textContent = name + ' 대표님';
+      document.getElementById('succStore').textContent = store;
+      document.getElementById('succPhone').textContent = phone;
+
+      document.getElementById('consultFormView').classList.add('hidden');
+      document.getElementById('consultSuccessView').classList.remove('hidden');
+    }
+
+    // Initialize on load
+    window.addEventListener('DOMContentLoaded', () => {
+      runSimulation();
+    });
+  </script>
+
+  <!-- Mount React if build environment loads bundle -->
+  <div id="root" class="hidden"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+</html>
